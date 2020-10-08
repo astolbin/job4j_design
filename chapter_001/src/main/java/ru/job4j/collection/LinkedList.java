@@ -58,7 +58,7 @@ public class LinkedList<E> implements Iterable<E> {
 
     private class Itr implements Iterator<E> {
         private int cursor = 0;
-        private Node<E> currentNode;
+        private Node<E> currentNode = first;
         private final int expectedModCount = modCount;
 
         @Override
@@ -74,13 +74,10 @@ public class LinkedList<E> implements Iterable<E> {
             if (expectedModCount != modCount) {
                 throw new ConcurrentModificationException();
             }
-            if (currentNode == null) {
-                currentNode = first;
-            } else {
-                currentNode = currentNode.next;
-            }
+            E rsl = currentNode.value;
+            currentNode = currentNode.next;
             cursor++;
-            return currentNode.value;
+            return rsl;
         }
     }
 }
