@@ -22,10 +22,11 @@ public class ForwardLinked<T> implements Iterable<T> {
     public T deleteFirst() {
         checkHead();
 
-        T deleted = head.value;
+        Node<T> deleted = head;
         head = head.next;
+        deleted.next = null;
 
-        return deleted;
+        return deleted.value;
     }
 
     public T deleteLast() {
