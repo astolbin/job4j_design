@@ -3,11 +3,12 @@ package ru.job4j.collection;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class User {
-    String name;
-    int children;
-    Calendar birthday;
+    private final String name;
+    private final int children;
+    private final Calendar birthday;
 
     public User(String name, int children, Calendar birthday) {
         this.name = name;
@@ -26,5 +27,10 @@ public class User {
         for (User user : map.keySet()) {
             System.out.println(map.get(user));
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
     }
 }
