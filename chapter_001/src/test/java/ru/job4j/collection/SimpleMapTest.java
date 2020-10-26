@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.ConcurrentModificationException;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -29,6 +30,14 @@ public class SimpleMapTest {
 
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(1));
+    }
+
+    @Test(expected = ConcurrentModificationException.class)
+    public void whenCorruptedIt() {
+        map.insert("first", 1);
+        Iterator<Integer> it = map.iterator();
+        map.insert("second", 2);
+        it.next();
     }
 
     @Test
@@ -73,7 +82,11 @@ public class SimpleMapTest {
         map.insert("567", 4);
         map.insert("678", 5);
         map.insert("789", 6);
+        map.insert("789", 7);
+        map.insert("890", 8);
+        map.insert("901", 9);
+        map.insert("012", 10);
 
-        assertThat(map.get("789"), is(6));
+        assertThat(map.get("012"), is(10));
     }
 }

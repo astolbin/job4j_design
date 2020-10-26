@@ -3,10 +3,11 @@ package ru.job4j.collection;
 import java.util.*;
 
 public class SimpleMap<K, V> implements Iterable<V> {
-    private final static float LOAD_FACTOR = 0.5f;
-    private final static int DEFAULT_CAPACITY = 6;
+    private final static float LOAD_FACTOR = 0.75f;
+    private final static int DEFAULT_CAPACITY = 8;
     private Item<K, V>[] table = new Item[DEFAULT_CAPACITY];
     private int size = 0;
+    private int modCount = 0;
 
     public boolean insert(K key, V value) {
         boolean rsl = false;
@@ -18,6 +19,7 @@ public class SimpleMap<K, V> implements Iterable<V> {
         if (table[index] == null) {
             table[index] = new Item<>(key, value);
             rsl = true;
+            modCount++;
             size++;
         }
 
@@ -49,6 +51,7 @@ public class SimpleMap<K, V> implements Iterable<V> {
             if (Objects.equals(key, item.key)) {
                 table[index] = null;
                 rsl = true;
+                modCount++;
                 size--;
             }
         }
@@ -59,9 +62,24 @@ public class SimpleMap<K, V> implements Iterable<V> {
     private void growTable() {
         int threshold = (int) (table.length * LOAD_FACTOR);
 
-        if (size >= threshold) {
-            int newCapacity = table.length + DEFAULT_CAPACITY;
-            table = Arrays.copyOf(table, newCapacity);
+        if (size < threshold) {
+            return;
+        }
+
+        var oldTable = table;
+        int newCapacity = table.length * 2;
+        table = new Item[newCapacity];
+
+        for (Item<K, V> item : oldTable) {
+            if (item == null) {
+                continue;
+            }
+
+            int index = getIndex(item.key);
+
+            if (table[index] == null) {
+                table[index] = item;
+            }
         }
     }
 
@@ -88,7 +106,8 @@ public class SimpleMap<K, V> implements Iterable<V> {
     }
 
     private class Itr implements Iterator<V> {
-        int cursor = 0;
+        private int cursor = 0;
+        private final int expectedModCount = modCount;
 
         @Override
         public boolean hasNext() {
@@ -103,6 +122,9 @@ public class SimpleMap<K, V> implements Iterable<V> {
         public V next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
+            }
+            if (expectedModCount != modCount) {
+                throw new ConcurrentModificationException();
             }
 
             return table[cursor++].value;
