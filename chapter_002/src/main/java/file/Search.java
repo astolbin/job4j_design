@@ -8,8 +8,13 @@ import java.util.List;
 
 public class Search {
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get(".");
-        search(start, "java").forEach(System.out::println);
+        if (args.length < 2) {
+            throw new IllegalArgumentException("Root folder or file extension is null.");
+        }
+
+        Path start = Paths.get(args[0]);
+        String ext = args[1];
+        search(start, ext).forEach(System.out::println);
 
         System.out.println(System.lineSeparator() + "Duplicates:");
         searchDuplicates(start).forEach(System.out::println);
