@@ -18,7 +18,16 @@ public class ArgsName {
     private void parse(String[] args) {
         Arrays.stream(args)
                 .map(param -> param.split("="))
-                .forEach(param -> values.put(param[0].substring(1), param[1]));
+                .forEach(param -> {
+                    checkFormat(param);
+                    values.put(param[0].substring(1), param[1]);
+                });
+    }
+
+    private void checkFormat(String[] param) {
+        if (param.length != 2 || !param[0].startsWith("-")) {
+            throw new IllegalArgumentException("Arguments must be in '-key=value' format");
+        }
     }
 
     public static ArgsName of(String[] args) {
