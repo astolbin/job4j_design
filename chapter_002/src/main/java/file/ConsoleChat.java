@@ -14,6 +14,7 @@ public class ConsoleChat {
     private static final String STOP = "стоп";
     private static final String CONTINUE = "продолжить";
     private String state = CONTINUE;
+    private final Logger logger = new Logger();
 
     public ConsoleChat(String path, String botAnswers) {
         this.path = path;
@@ -47,6 +48,8 @@ public class ConsoleChat {
                 System.out.println("Ответ: " + log(answers.get(rand)));
             }
         }
+
+        logger.save();
     }
 
     private List<String> getAnswers() {
@@ -61,13 +64,7 @@ public class ConsoleChat {
     }
 
     private String log(String message) {
-        try (PrintWriter out = new PrintWriter(new BufferedOutputStream(
-                    new FileOutputStream(path, true)), true, StandardCharsets.UTF_8)) {
-            out.println("- " + message);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        logger.log(message);
         return message;
     }
 
@@ -77,5 +74,22 @@ public class ConsoleChat {
                 "./data/chat_answers.txt"
         );
         cc.run();
+    }
+
+    private class Logger {
+        private final List<String> log = new ArrayList<>();
+
+        public void log(String message) {
+            log.add("- " + message);
+        }
+
+        public void save() {
+            try (PrintWriter out = new PrintWriter(new BufferedOutputStream(
+                    new FileOutputStream(path, true)), true, StandardCharsets.UTF_8)) {
+                log.forEach(out::println);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
