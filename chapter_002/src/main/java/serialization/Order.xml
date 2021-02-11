@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<order id="1" payed="false" status="NEW">
+    <comments>
+        <comment>comment 1</comment>
+        <comment>comment 2</comment>
+    </comments>
+    <buyer id="1" fio="name 1"/>
+    <products>
+        <product id="1" name="product 1" price="13.5" count="1"/>
+        <product id="2" name="product 2" price="8.2" count="3"/>
+        <product id="3" name="product 3" price="18.0" count="2"/>
+    </products>
+</order>
