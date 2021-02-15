@@ -3,16 +3,38 @@ package serialization;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.StringReader;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Objects;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.*;
+import java.io.StringWriter;
+
+@XmlRootElement(name = "order")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Order {
-    private final int id;
-    private final boolean payed;
-    private final String[] comments;
-    private final Buyer buyer;
-    private final Product[] products;
+    @XmlAttribute
+    private int id;
+
+    @XmlAttribute
+    private boolean payed;
+
+    @XmlElementWrapper(name = "comments")
+    @XmlElement(name = "comment")
+    private String[] comments;
+
+    private Buyer buyer;
+
+    @XmlElementWrapper(name = "products")
+    @XmlElement(name = "product")
+    private Product[] products;
+
+    public Order() {}
 
     public Order(int id, boolean payed, String[] comments, Buyer buyer, Product[] products) {
         this.id = id;
@@ -22,7 +44,7 @@ public class Order {
         this.products = products;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Buyer buyer = new Buyer(1, "Test 1");
         Product[] products = {
                 new Product(1, "product 1", 1, new BigDecimal("23.0")),
@@ -40,6 +62,23 @@ public class Order {
 
         Order check = gson.fromJson(json, Order.class);
         System.out.println(order.equals(check));
+
+        JAXBContext context = JAXBContext.newInstance(Order.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+        String xml = "";
+        try (StringWriter writer = new StringWriter()) {
+            marshaller.marshal(order, writer);
+            xml = writer.getBuffer().toString();
+        }
+
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        try (StringReader reader = new StringReader(xml)) {
+            Order orderCheck = (Order) unmarshaller.unmarshal(reader);
+            System.out.println(order.equals(orderCheck));
+        }
+
     }
 
     @Override
@@ -62,9 +101,16 @@ public class Order {
         return result;
     }
 
+    @XmlRootElement(name = "buyer")
+    @XmlAccessorType(XmlAccessType.FIELD)
     private static class Buyer {
-        private final int id;
-        private final String fio;
+        @XmlAttribute
+        private int id;
+
+        @XmlAttribute
+        private String fio;
+
+        public Buyer() {}
 
         public Buyer(int id, String fio) {
             this.id = id;
@@ -86,11 +132,22 @@ public class Order {
         }
     }
 
+    @XmlRootElement(name = "product")
+    @XmlAccessorType(XmlAccessType.FIELD)
     private static class Product {
-        private final int id;
-        private final String name;
-        private final int count;
-        private final BigDecimal price;
+        @XmlAttribute
+        private int id;
+
+        @XmlAttribute
+        private String name;
+
+        @XmlAttribute
+        private int count;
+
+        @XmlAttribute
+        private BigDecimal price;
+
+        public Product() {}
 
         public Product(int id, String name, int count, BigDecimal price) {
             this.id = id;
