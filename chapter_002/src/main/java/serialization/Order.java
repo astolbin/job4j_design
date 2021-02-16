@@ -2,6 +2,7 @@ package serialization;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONObject;
 
 import java.io.StringReader;
 import java.math.BigDecimal;
@@ -35,6 +36,26 @@ public class Order {
     private Product[] products;
 
     public Order() {}
+
+    public int getId() {
+        return id;
+    }
+
+    public boolean isPayed() {
+        return payed;
+    }
+
+    public String[] getComments() {
+        return comments;
+    }
+
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    public Product[] getProducts() {
+        return products;
+    }
 
     public Order(int id, boolean payed, String[] comments, Buyer buyer, Product[] products) {
         this.id = id;
@@ -79,6 +100,7 @@ public class Order {
             System.out.println(order.equals(orderCheck));
         }
 
+        System.out.println(new JSONObject(order).toString());
     }
 
     @Override
@@ -103,7 +125,7 @@ public class Order {
 
     @XmlRootElement(name = "buyer")
     @XmlAccessorType(XmlAccessType.FIELD)
-    private static class Buyer {
+    public static class Buyer {
         @XmlAttribute
         private int id;
 
@@ -115,6 +137,14 @@ public class Order {
         public Buyer(int id, String fio) {
             this.id = id;
             this.fio = fio;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getFio() {
+            return fio;
         }
 
         @Override
@@ -134,7 +164,7 @@ public class Order {
 
     @XmlRootElement(name = "product")
     @XmlAccessorType(XmlAccessType.FIELD)
-    private static class Product {
+    public static class Product {
         @XmlAttribute
         private int id;
 
@@ -170,6 +200,22 @@ public class Order {
         @Override
         public int hashCode() {
             return Objects.hash(id, name, count, price);
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getCount() {
+            return count;
+        }
+
+        public BigDecimal getPrice() {
+            return price;
         }
     }
 }
