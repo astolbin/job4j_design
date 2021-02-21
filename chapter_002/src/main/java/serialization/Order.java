@@ -2,11 +2,14 @@ package serialization;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.StringReader;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import javax.xml.bind.JAXBContext;
@@ -101,6 +104,27 @@ public class Order {
         }
 
         System.out.println(new JSONObject(order).toString());
+
+        JSONObject jsonBuyer = new JSONObject();
+        jsonBuyer.put("id", 1);
+        jsonBuyer.put("fio", "Test 1");
+
+        JSONArray jsonComments = new JSONArray(new String[] {"comment 1", "comment 2"});
+
+        List<JSONObject> productList = new ArrayList<>();
+        productList.add(new JSONObject("{\"id\":1,\"name\":\"product 1\",\"count\":1,\"price\":23.0}"));
+        productList.add(new JSONObject("{\"id\":2,\"name\":\"product 2\",\"count\":3,\"price\":5.5}"));
+        productList.add(new JSONObject("{\"id\":3,\"name\":\"product 3\",\"count\":2,\"price\":8.3}"));
+        JSONArray jsonProducts = new JSONArray(productList);
+
+        JSONObject jsonOrder = new JSONObject();
+        jsonOrder.put("id", 1);
+        jsonOrder.put("payed", false);
+        jsonOrder.put("comments", jsonComments);
+        jsonOrder.put("buyer", jsonBuyer);
+        jsonOrder.put("products", jsonProducts);
+
+        System.out.println(jsonOrder.toString());
     }
 
     @Override
