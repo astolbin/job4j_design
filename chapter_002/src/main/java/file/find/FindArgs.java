@@ -12,8 +12,8 @@ public class FindArgs {
         if (!values.containsKey(key)) {
             String message = "Argument '" + key + "' not found" + LS
                     + "-d - directory to search files" + LS
-                    + "-n - file name, mask or regexp" + LS
-                    + "-t - search type (name, mask, regexp)" + LS
+                    + "-n - file name, mask or regex" + LS
+                    + "-t - search type (name, mask, regex)" + LS
                     + "-o - output file";
             throw new IllegalArgumentException(message);
         }

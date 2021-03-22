@@ -9,12 +9,17 @@ public class FileSearchFactory {
 
         switch (args.getType()) {
             case "name" -> rsl = new FileSearch(p -> p.getFileName().toString().equals(args.getName()));
-            case "mask", "regexp" -> {
+            case "mask" -> {
                 PathMatcher pathMatcher =
                         FileSystems.getDefault().getPathMatcher("glob:**/" + args.getName());
                 rsl = new FileSearch(pathMatcher::matches);
             }
-            default -> throw new IllegalArgumentException("Search type does not match: [name, mask, regexp]");
+            case "regex" -> {
+                PathMatcher pathMatcher =
+                        FileSystems.getDefault().getPathMatcher("regex:" + args.getName());
+                rsl = new FileSearch(pathMatcher::matches);
+            }
+            default -> throw new IllegalArgumentException("Search type does not match: [name, mask, regex]");
         }
 
         return rsl;
