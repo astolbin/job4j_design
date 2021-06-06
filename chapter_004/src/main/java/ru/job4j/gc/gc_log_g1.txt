@@ -1,0 +1,91 @@
+C:\Users\astol\.jdks\openjdk-15.0.2\bin\java.exe -Xmx4m -Xms4m -XX:+UseG1GC "-Xlog:gc*" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.2\lib\idea_rt.jar=65082:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.2\bin" -Dfile.encoding=UTF-8 -classpath C:\projects\job4j_design\chapter_004\target\classes;C:\Users\astol\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\astol\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\astol\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\astol\.m2\repository\org\slf4j\slf4j-log4j12\1.7.30\slf4j-log4j12-1.7.30.jar;C:\Users\astol\.m2\repository\org\slf4j\slf4j-api\1.7.30\slf4j-api-1.7.30.jar;C:\Users\astol\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\astol\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\astol\.m2\repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\astol\.m2\repository\javax\activation\activation\1.1.1\activation-1.1.1.jar;C:\Users\astol\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.1\jaxb-runtime-2.3.1.jar;C:\Users\astol\.m2\repository\org\glassfish\jaxb\txw2\2.3.1\txw2-2.3.1.jar;C:\Users\astol\.m2\repository\com\sun\istack\istack-commons-runtime\3.0.7\istack-commons-runtime-3.0.7.jar;C:\Users\astol\.m2\repository\org\jvnet\staxex\stax-ex\1.8\stax-ex-1.8.jar;C:\Users\astol\.m2\repository\com\sun\xml\fastinfoset\FastInfoset\1.2.15\FastInfoset-1.2.15.jar;C:\Users\astol\.m2\repository\org\json\json\20200518\json-20200518.jar;C:\Users\astol\.m2\repository\org\postgresql\postgresql\42.2.16\postgresql-42.2.16.jar;C:\Users\astol\.m2\repository\org\checkerframework\checker-qual\3.5.0\checker-qual-3.5.0.jar;C:\Users\astol\.m2\repository\com\carrotsearch\java-sizeof\0.0.5\java-sizeof-0.0.5.jar ru.job4j.gc.GCDemo
+[0.013s][info][gc] Using G1
+[0.014s][info][gc,init] Version: 15.0.2+7-27 (release)
+[0.014s][info][gc,init] CPUs: 8 total, 8 available
+[0.014s][info][gc,init] Memory: 16072M
+[0.014s][info][gc,init] Large Page Support: Disabled
+[0.014s][info][gc,init] NUMA Support: Disabled
+[0.014s][info][gc,init] Compressed Oops: Enabled (32-bit)
+[0.014s][info][gc,init] Heap Region Size: 1M
+[0.014s][info][gc,init] Heap Min Capacity: 4M
+[0.014s][info][gc,init] Heap Initial Capacity: 4M
+[0.014s][info][gc,init] Heap Max Capacity: 4M
+[0.014s][info][gc,init] Pre-touch: Disabled
+[0.014s][info][gc,init] Parallel Workers: 8
+[0.014s][info][gc,init] Concurrent Workers: 2
+[0.014s][info][gc,init] Concurrent Refinement Workers: 8
+[0.014s][info][gc,init] Periodic GC: Disabled
+[0.015s][info][gc,metaspace] CDS archive(s) mapped at: [0x0000000800000000-0x0000000800b50000-0x0000000800b50000), size 11862016, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+[0.015s][info][gc,metaspace] Compressed class space mapped at: 0x0000000800b50000-0x0000000840b50000, size: 1073741824
+[0.015s][info][gc,metaspace] Narrow klass base: 0x0000000800000000, Narrow klass shift: 3, Narrow klass range: 0x100000000
+[0.103s][info][gc,start    ] GC(0) Pause Young (Normal) (G1 Evacuation Pause)
+[0.103s][info][gc,task     ] GC(0) Using 2 workers of 8 for evacuation
+[0.104s][info][gc,phases   ] GC(0)   Pre Evacuate Collection Set: 0.0ms
+[0.104s][info][gc,phases   ] GC(0)   Merge Heap Roots: 0.0ms
+[0.104s][info][gc,phases   ] GC(0)   Evacuate Collection Set: 1.3ms
+[0.104s][info][gc,phases   ] GC(0)   Post Evacuate Collection Set: 0.1ms
+[0.104s][info][gc,phases   ] GC(0)   Other: 0.3ms
+[0.104s][info][gc,heap     ] GC(0) Eden regions: 1->0(1)
+[0.104s][info][gc,heap     ] GC(0) Survivor regions: 0->1(1)
+[0.104s][info][gc,heap     ] GC(0) Old regions: 0->0
+[0.104s][info][gc,heap     ] GC(0) Archive regions: 0->0
+[0.104s][info][gc,heap     ] GC(0) Humongous regions: 0->0
+[0.104s][info][gc,metaspace] GC(0) Metaspace: 313K(4864K)->313K(4864K) NonClass: 287K(4352K)->287K(4352K) Class: 25K(512K)->25K(512K)
+[0.104s][info][gc          ] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 1M->0M(4M) 1.891ms
+[0.104s][info][gc,cpu      ] GC(0) User=0.00s Sys=0.00s Real=0.00s
+[0.153s][info][gc,start    ] GC(1) Pause Young (Normal) (G1 Evacuation Pause)
+[0.153s][info][gc,task     ] GC(1) Using 2 workers of 8 for evacuation
+[0.155s][info][gc,phases   ] GC(1)   Pre Evacuate Collection Set: 0.0ms
+[0.155s][info][gc,phases   ] GC(1)   Merge Heap Roots: 0.0ms
+[0.155s][info][gc,phases   ] GC(1)   Evacuate Collection Set: 1.8ms
+[0.155s][info][gc,phases   ] GC(1)   Post Evacuate Collection Set: 0.1ms
+[0.155s][info][gc,phases   ] GC(1)   Other: 0.1ms
+[0.155s][info][gc,heap     ] GC(1) Eden regions: 1->0(1)
+[0.155s][info][gc,heap     ] GC(1) Survivor regions: 1->1(1)
+[0.155s][info][gc,heap     ] GC(1) Old regions: 0->1
+[0.155s][info][gc,heap     ] GC(1) Archive regions: 0->0
+[0.155s][info][gc,heap     ] GC(1) Humongous regions: 0->0
+[0.155s][info][gc,metaspace] GC(1) Metaspace: 527K(4864K)->527K(4864K) NonClass: 483K(4352K)->483K(4352K) Class: 43K(512K)->43K(512K)
+[0.155s][info][gc          ] GC(1) Pause Young (Normal) (G1 Evacuation Pause) 1M->1M(4M) 2.119ms
+[0.156s][info][gc,cpu      ] GC(1) User=0.00s Sys=0.00s Real=0.00s
+=== Environment state ===
+Free: 2
+Total: 4
+Max: 4
+[0.193s][info][gc,start    ] GC(2) Pause Young (Normal) (G1 Evacuation Pause)
+[0.193s][info][gc,task     ] GC(2) Using 2 workers of 8 for evacuation
+[0.194s][info][gc          ] GC(2) To-space exhausted
+[0.194s][info][gc,phases   ] GC(2)   Pre Evacuate Collection Set: 0.0ms
+[0.194s][info][gc,phases   ] GC(2)   Merge Heap Roots: 0.0ms
+[0.194s][info][gc,phases   ] GC(2)   Evacuate Collection Set: 1.2ms
+[0.194s][info][gc,phases   ] GC(2)   Post Evacuate Collection Set: 0.3ms
+[0.194s][info][gc,phases   ] GC(2)   Other: 0.1ms
+[0.194s][info][gc,heap     ] GC(2) Eden regions: 1->0(1)
+[0.194s][info][gc,heap     ] GC(2) Survivor regions: 1->1(1)
+[0.194s][info][gc,heap     ] GC(2) Old regions: 1->2
+[0.194s][info][gc,heap     ] GC(2) Archive regions: 0->0
+[0.194s][info][gc,heap     ] GC(2) Humongous regions: 0->0
+[0.194s][info][gc,metaspace] GC(2) Metaspace: 1102K(4864K)->1102K(4864K) NonClass: 991K(4352K)->991K(4352K) Class: 110K(512K)->110K(512K)
+[0.194s][info][gc          ] GC(2) Pause Young (Normal) (G1 Evacuation Pause) 2M->2M(4M) 1.671ms
+[0.194s][info][gc,cpu      ] GC(2) User=0.00s Sys=0.00s Real=0.00s
+=== Environment state ===
+Free: 1
+Total: 4
+Max: 4
+[0.198s][info][gc,heap,exit] Heap
+[0.198s][info][gc,heap,exit]  garbage-first heap   total 4096K, used 2124K [0x00000000ffc00000, 0x0000000100000000)
+[0.198s][info][gc,heap,exit]   region size 1024K, 2 young (2048K), 1 survivors (1024K)
+[0.198s][info][gc,heap,exit]  Metaspace       used 1104K, capacity 4610K, committed 4864K, reserved 1056768K
+[0.198s][info][gc,heap,exit]   class space    used 110K, capacity 400K, committed 512K, reserved 1048576K
+
+Process finished with exit code 0
+
+
+
+====================================================
+
+Общее время сборки мусора: 5.681ms
+Количество сборок мусора: 3
+Среднее время STW: 1.89ms
+Максимальное время STW: 2.119ms
+Throughput: (1 - 5.681/198) * 100% = 97.13

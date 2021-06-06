@@ -1,0 +1,62 @@
+C:\Users\astol\.jdks\openjdk-15.0.2\bin\java.exe -Xmx4m -Xms4m -XX:+UseSerialGC "-Xlog:gc*" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.2\lib\idea_rt.jar=50606:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.2\bin" -Dfile.encoding=UTF-8 -classpath C:\projects\job4j_design\chapter_004\target\classes;C:\Users\astol\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\astol\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\astol\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\astol\.m2\repository\org\slf4j\slf4j-log4j12\1.7.30\slf4j-log4j12-1.7.30.jar;C:\Users\astol\.m2\repository\org\slf4j\slf4j-api\1.7.30\slf4j-api-1.7.30.jar;C:\Users\astol\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\astol\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\astol\.m2\repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\astol\.m2\repository\javax\activation\activation\1.1.1\activation-1.1.1.jar;C:\Users\astol\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.1\jaxb-runtime-2.3.1.jar;C:\Users\astol\.m2\repository\org\glassfish\jaxb\txw2\2.3.1\txw2-2.3.1.jar;C:\Users\astol\.m2\repository\com\sun\istack\istack-commons-runtime\3.0.7\istack-commons-runtime-3.0.7.jar;C:\Users\astol\.m2\repository\org\jvnet\staxex\stax-ex\1.8\stax-ex-1.8.jar;C:\Users\astol\.m2\repository\com\sun\xml\fastinfoset\FastInfoset\1.2.15\FastInfoset-1.2.15.jar;C:\Users\astol\.m2\repository\org\json\json\20200518\json-20200518.jar;C:\Users\astol\.m2\repository\org\postgresql\postgresql\42.2.16\postgresql-42.2.16.jar;C:\Users\astol\.m2\repository\org\checkerframework\checker-qual\3.5.0\checker-qual-3.5.0.jar;C:\Users\astol\.m2\repository\com\carrotsearch\java-sizeof\0.0.5\java-sizeof-0.0.5.jar ru.job4j.gc.GCDemo
+[0.008s][info][gc] Using Serial
+[0.008s][info][gc,init] Version: 15.0.2+7-27 (release)
+[0.008s][info][gc,init] CPUs: 8 total, 8 available
+[0.008s][info][gc,init] Memory: 16072M
+[0.008s][info][gc,init] Large Page Support: Disabled
+[0.008s][info][gc,init] NUMA Support: Disabled
+[0.008s][info][gc,init] Compressed Oops: Enabled (32-bit)
+[0.008s][info][gc,init] Heap Min Capacity: 4M
+[0.008s][info][gc,init] Heap Initial Capacity: 4M
+[0.008s][info][gc,init] Heap Max Capacity: 4M
+[0.008s][info][gc,init] Pre-touch: Disabled
+[0.009s][info][gc,metaspace] CDS archive(s) mapped at: [0x0000000800000000-0x0000000800b50000-0x0000000800b50000), size 11862016, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+[0.009s][info][gc,metaspace] Compressed class space mapped at: 0x0000000800b50000-0x0000000840b50000, size: 1073741824
+[0.009s][info][gc,metaspace] Narrow klass base: 0x0000000800000000, Narrow klass shift: 3, Narrow klass range: 0x100000000
+[0.093s][info][gc,start    ] GC(0) Pause Young (Allocation Failure)
+[0.095s][info][gc,heap     ] GC(0) DefNew: 1088K(1216K)->127K(1216K) Eden: 1088K(1088K)->0K(1088K) From: 0K(128K)->127K(128K)
+[0.095s][info][gc,heap     ] GC(0) Tenured: 0K(2752K)->423K(2752K)
+[0.095s][info][gc,metaspace] GC(0) Metaspace: 316K(4864K)->316K(4864K) NonClass: 291K(4352K)->291K(4352K) Class: 25K(512K)->25K(512K)
+[0.095s][info][gc          ] GC(0) Pause Young (Allocation Failure) 1M->0M(3M) 2.416ms
+[0.095s][info][gc,cpu      ] GC(0) User=0.00s Sys=0.00s Real=0.00s
+=== Environment state ===
+[0.155s][info][gc,start    ] GC(1) Pause Young (Allocation Failure)
+[0.158s][info][gc,heap     ] GC(1) DefNew: 1215K(1216K)->128K(1216K) Eden: 1088K(1088K)->0K(1088K) From: 127K(128K)->128K(128K)
+[0.158s][info][gc,heap     ] GC(1) Tenured: 423K(2752K)->1068K(2752K)
+[0.158s][info][gc,metaspace] GC(1) Metaspace: 639K(4864K)->639K(4864K) NonClass: 581K(4352K)->581K(4352K) Class: 58K(512K)->58K(512K)
+[0.159s][info][gc          ] GC(1) Pause Young (Allocation Failure) 1M->1M(3M) 3.047ms
+[0.159s][info][gc,cpu      ] GC(1) User=0.00s Sys=0.00s Real=0.00s
+Free: 2
+Total: 4
+Max: 4
+[0.192s][info][gc,start    ] GC(2) Pause Young (Allocation Failure)
+[0.193s][info][gc,heap     ] GC(2) DefNew: 1216K(1216K)->127K(1216K) Eden: 1088K(1088K)->0K(1088K) From: 128K(128K)->127K(128K)
+[0.193s][info][gc,heap     ] GC(2) Tenured: 1068K(2752K)->1427K(2752K)
+[0.193s][info][gc,metaspace] GC(2) Metaspace: 1130K(4864K)->1130K(4864K) NonClass: 1018K(4352K)->1018K(4352K) Class: 111K(512K)->111K(512K)
+[0.193s][info][gc          ] GC(2) Pause Young (Allocation Failure) 2M->1M(3M) 1.657ms
+[0.193s][info][gc,cpu      ] GC(2) User=0.00s Sys=0.00s Real=0.00s
+=== Environment state ===
+Free: 2
+Total: 4
+Max: 4
+[0.196s][info][gc,heap,exit] Heap
+[0.196s][info][gc,heap,exit]  def new generation   total 1216K, used 541K [0x00000000ffc00000, 0x00000000ffd50000, 0x00000000ffd50000)
+[0.196s][info][gc,heap,exit]   eden space 1088K,  38% used [0x00000000ffc00000, 0x00000000ffc677e0, 0x00000000ffd10000)
+[0.196s][info][gc,heap,exit]   from space 128K,  99% used [0x00000000ffd30000, 0x00000000ffd4fff8, 0x00000000ffd50000)
+[0.196s][info][gc,heap,exit]   to   space 128K,   0% used [0x00000000ffd10000, 0x00000000ffd10000, 0x00000000ffd30000)
+[0.196s][info][gc,heap,exit]  tenured generation   total 2752K, used 1427K [0x00000000ffd50000, 0x0000000100000000, 0x0000000100000000)
+[0.196s][info][gc,heap,exit]    the space 2752K,  51% used [0x00000000ffd50000, 0x00000000ffeb4e80, 0x00000000ffeb5000, 0x0000000100000000)
+[0.196s][info][gc,heap,exit]  Metaspace       used 1132K, capacity 4610K, committed 4864K, reserved 1056768K
+[0.196s][info][gc,heap,exit]   class space    used 111K, capacity 400K, committed 512K, reserved 1048576K
+
+Process finished with exit code 0
+
+
+
+====================================================
+
+Общее время сборки мусора: 7.12ms
+Количество сборок мусора: 3
+Среднее время STW: 2.37ms
+Максимальное время STW: 3.047ms
+Throughput: (1 - 7.12/196) * 100% = 96.37
