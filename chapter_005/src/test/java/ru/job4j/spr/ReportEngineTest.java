@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.is;
 import org.junit.Test;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Currency;
 
@@ -73,6 +74,51 @@ public class ReportEngineTest {
                 "</body>",
                 "</html>"
                 );
+        assertThat(engine.generate(em -> true), is(expect));
+    }
+
+    @Test
+    public void whenReportXml() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker = new Employee("Ivan", now, now, 1000);
+        store.add(worker);
+        Report engine = new ReportEngine(store, new ReportFormatterXml());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+        String expect = String.join(
+                "",
+                "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
+                "<report>",
+                "<employees>",
+                "<employee>",
+                "<fired>" + dateFormat.format(worker.getFired().getTime()) + "</fired>",
+                "<hired>" + dateFormat.format(worker.getHired().getTime()) + "</hired>",
+                "<name>" + worker.getName() + "</name>",
+                "<salary>" + worker.getSalary() + "</salary>",
+                "</employee>",
+                "</employees>",
+                "</report>"
+        );
+        assertThat(engine.generate(em -> true), is(expect));
+    }
+
+    @Test
+    public void whenReportJson() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker = new Employee("Ivan", now, now, 1000);
+        store.add(worker);
+        Report engine = new ReportEngine(store, new ReportFormatterJson());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+        String expect = String.join(
+                "",
+                "{\"employees\":[{",
+                "\"fired\":", "\"", dateFormat.format(worker.getHired().getTime()), "\",",
+                "\"name\":", "\"", worker.getName(), "\",",
+                "\"hired\":", "\"", dateFormat.format(worker.getHired().getTime()), "\",",
+                "\"salary\":", String.valueOf((int)worker.getSalary()),
+                "}]}"
+        );
         assertThat(engine.generate(em -> true), is(expect));
     }
 }
