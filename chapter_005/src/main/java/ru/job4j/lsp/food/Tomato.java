@@ -1,10 +1,10 @@
-package ru.job4j.lsp;
+package ru.job4j.lsp.food;
 
 import java.time.LocalDate;
 
-public class Milk extends Food {
+public class Tomato extends Food {
 
-    public Milk(
+    public Tomato(
             String name,
             LocalDate expiryDate,
             LocalDate createDate,

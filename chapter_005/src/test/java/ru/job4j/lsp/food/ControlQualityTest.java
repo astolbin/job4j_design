@@ -1,4 +1,4 @@
-package ru.job4j.lsp;
+package ru.job4j.lsp.food;
 
 import org.junit.Before;
 import org.junit.Test;
