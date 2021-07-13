@@ -1,19 +1,14 @@
 package ru.job4j.lsp.parking;
 
-import java.util.List;
-import java.util.function.Predicate;
+public class CargoStore extends CarStore {
 
-public class CargoStore implements Store {
-    public CargoStore(int cellsCount) {
+    public CargoStore(int cellsCapacity) {
+        super(cellsCapacity);
     }
 
     @Override
     public boolean place(Car car) {
-        return false;
-    }
-
-    @Override
-    public List<Car> findByFilter(Predicate<Car> filter) {
-        return null;
+        return car.getCellsCount() > 1
+                && super.place(car);
     }
 }

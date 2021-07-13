@@ -1,11 +1,14 @@
 package ru.job4j.lsp.parking;
 
 public class CargoTrack implements Car {
-    public CargoTrack(int cells) {
+    private final int cellsCount;
+
+    public CargoTrack(int cellsCount) {
+        this.cellsCount = cellsCount;
     }
 
     @Override
     public int getCellsCount() {
-        return 0;
+        return cellsCount;
     }
 }
