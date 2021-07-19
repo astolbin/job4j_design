@@ -26,7 +26,7 @@ public class ControlQualityTest {
     }
 
     @Test
-    public void whenRoutToWarehouse() {
+    public void whenRouteToWarehouse() {
         Food apple = new Apple(
                 "Green apple",
                 LocalDate.now().plusDays(20),
@@ -35,7 +35,7 @@ public class ControlQualityTest {
                 0
         );
 
-        controller.rout(apple);
+        controller.route(apple);
 
         assertEquals(apple, warehouse.getByFilter(filter).get(0));
         assertEquals(0, shop.getByFilter(filter).size());
@@ -43,7 +43,7 @@ public class ControlQualityTest {
     }
 
     @Test
-    public void whenRoutToShop() {
+    public void whenRouteToShop() {
         Food milk = new Milk(
                 "Village milk",
                 LocalDate.now().plusDays(10),
@@ -52,7 +52,7 @@ public class ControlQualityTest {
                 0
         );
 
-        controller.rout(milk);
+        controller.route(milk);
 
         assertEquals(milk, shop.getByFilter(filter).get(0));
         assertEquals(0, shop.getByFilter(filter).get(0).getDiscount(), 0.1);
@@ -61,7 +61,7 @@ public class ControlQualityTest {
     }
 
     @Test
-    public void whenRoutToShopWithDiscount() {
+    public void whenRouteToShopWithDiscount() {
         double price = 100.0;
         Food milk = new Milk(
                 "Village milk",
@@ -71,7 +71,7 @@ public class ControlQualityTest {
                 0
         );
 
-        controller.rout(milk);
+        controller.route(milk);
 
         Food routedFood = shop.getByFilter(filter).get(0);
         double priceWithDiscount = price * (100 - routedFood.getDiscount()) / 100;
@@ -83,7 +83,7 @@ public class ControlQualityTest {
     }
 
     @Test
-    public void whenRoutToTrash() {
+    public void whenRouteToTrash() {
         Food tomato = new Tomato(
                 "Red tomato",
                 LocalDate.now().minusDays(3),
@@ -92,7 +92,7 @@ public class ControlQualityTest {
                 0
         );
 
-        controller.rout(tomato);
+        controller.route(tomato);
 
         assertEquals(tomato, trash.getByFilter(filter).get(0));
         assertEquals(0, warehouse.getByFilter(filter).size());
@@ -100,7 +100,7 @@ public class ControlQualityTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    public void whenRoutFail() {
+    public void whenRouteFail() {
         Food apple = new Apple(
                 "Green apple",
                 LocalDate.now().plusDays(20),
@@ -110,6 +110,6 @@ public class ControlQualityTest {
         );
 
         ControlQuality emptyController = new ControlQuality(List.of());
-        emptyController.rout(apple);
+        emptyController.route(apple);
     }
 }
