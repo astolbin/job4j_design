@@ -112,4 +112,23 @@ public class ControlQualityTest {
         ControlQuality emptyController = new ControlQuality(List.of());
         emptyController.route(apple);
     }
+
+    @Test
+    public void whenResort() {
+        Food apple = new Apple(
+                "Green apple",
+                LocalDate.now().plusDays(20),
+                LocalDate.now().minusDays(5),
+                100.0,
+                0
+        );
+
+        controller.route(apple);
+        controller.resort(LocalDate.now().plusDays(10));
+
+        assertEquals(apple, shop.getByFilter(filter).get(0));
+        assertEquals(0, shop.getByFilter(filter).get(0).getDiscount(), 0.1);
+        assertEquals(0, warehouse.getByFilter(filter).size());
+        assertEquals(0, trash.getByFilter(filter).size());
+    }
 }

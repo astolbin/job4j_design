@@ -6,4 +6,5 @@ import java.util.function.Predicate;
 public interface Store {
     boolean accept(Food food, double expiryPercent);
     List<Food> getByFilter(Predicate<Food> predicate);
+    List<Food> extract();
 }

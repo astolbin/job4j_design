@@ -25,4 +25,11 @@ public abstract class StoreFood implements Store {
                 .filter(predicate)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Food> extract() {
+        var rsl = new ArrayList<>(foodList);
+        foodList.clear();
+        return rsl;
+    }
 }
