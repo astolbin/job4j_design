@@ -2,6 +2,7 @@ package ru.job4j.lsp.food;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ControlQuality {
     private final List<Store> stores;
@@ -27,6 +28,7 @@ public class ControlQuality {
     public void resort(LocalDate date) {
         stores.stream()
                 .flatMap(store -> store.extract().stream())
+                .collect(Collectors.toList())
                 .forEach(food -> route(food, date));
     }
 
